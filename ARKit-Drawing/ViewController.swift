@@ -141,10 +141,29 @@ class ViewController: UIViewController {
         }
     }
     
-    func reloadConfiguration() {
+    func reloadConfiguration(reset: Bool = false) {
+        var options: ARSession.RunOptions = []
+        
+        if reset {
+            // Clear objects placed
+            objectsPlaced.forEach { $0.removeFromParentNode() }
+            objectsPlaced.removeAll()
+        
+            // Clear placed planes
+            planeNodes.forEach { $0.removeFromParentNode() }
+            planeNodes.removeAll()
+        
+            // Hide all future planes
+            arePlanesHidden = true
+        
+            // Remove existing anchors if reset is true
+            options = .removeExistingAnchors
+        }
+        
+        // Reload configuration
         configuration.detectionImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil)
         configuration.planeDetection = .horizontal
-        sceneView.session.run(configuration)
+        sceneView.session.run(configuration, options: options)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -160,7 +179,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         sceneView.delegate = self
         sceneView.autoenablesDefaultLighting = true
     }
@@ -192,96 +210,4 @@ class ViewController: UIViewController {
         }
     }
     
-}
-
-// MARK: - OptionsViewControllerDelegate
-extension ViewController: OptionsViewControllerDelegate {
-    
-    func objectSelected(node: SCNNode) {
-        dismiss(animated: true, completion: nil)
-        selectedNode = node
-    }
-    
-    func togglePlaneVisualization() {
-        dismiss(animated: true, completion: nil)
-        
-        guard objectMode == .plane else { return }
-        arePlanesHidden.toggle()
-    }
-    
-    func undoLastObject() {
-        
-    }
-    
-    func resetScene() {
-        dismiss(animated: true, completion: nil)
-    }
-}
-
-// MARK: - ARSCNViewDelegate
-extension ViewController: ARSCNViewDelegate {
-    func createFloor(with size: CGSize, opacity: CGFloat = 0.25) -> SCNNode {
-        let plane = SCNPlane(width: size.width, height: size.height)
-        plane.firstMaterial?.diffuse.contents = UIColor.white
-        
-        let planeNode = SCNNode(geometry: plane)
-        planeNode.eulerAngles.x -= .pi / 2
-        planeNode.opacity = opacity
-        
-        return planeNode
-    }
-    
-    func nodeAdded(_ node: SCNNode, for anchor: ARImageAnchor) {
-        // Put a plane at the image
-        let size = anchor.referenceImage.physicalSize
-        let coverNode = createFloor(with: size, opacity: 0.1)
-        coverNode.name = "image"
-        node.addChildNode(coverNode)
-    }
-    
-    func nodeAdded(_ node: SCNNode, for anchor: ARPlaneAnchor) {
-        let extent = anchor.extent
-        let size = CGSize(width: CGFloat(extent.x), height: CGFloat(extent.z))
-        let planeNode = createFloor(with: size)
-        planeNode.isHidden = arePlanesHidden
-        
-        // Add plane to the plane node list
-        planeNodes.append(planeNode)
-        
-        node.addChildNode(planeNode)
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        switch anchor {
-        case let imageAnchor as ARImageAnchor:
-            nodeAdded(node, for: imageAnchor)
-        case let planeAnchor as ARPlaneAnchor:
-            nodeAdded(node, for: planeAnchor)
-        default:
-            print(#line, #function, "Unknown anchor type \(anchor) is found")
-        }
-    }
-    
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        switch anchor {
-        case is ARImageAnchor:
-            break
-        case let planeAnchor as ARPlaneAnchor:
-            updateFloor(for: node, anchor: planeAnchor)
-        default:
-            print(#line, #function, "Unknown anchor type \(anchor) is updated")
-        }
-    }
-    
-    func updateFloor(for node: SCNNode, anchor: ARPlaneAnchor) {
-        guard let planeNode = node.childNodes.first, let plane = planeNode.geometry as? SCNPlane else { return }
-        
-        // Get estimated plane size
-        let extent = anchor.extent
-        plane.width = CGFloat(extent.x)
-        plane.height = CGFloat(extent.z)
-        
-        // Position the plane node in the center
-        planeNode.simdPosition = anchor.center
-    }
 }

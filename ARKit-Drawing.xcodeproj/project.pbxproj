@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ABBA92927AC15260005EA82 /* ViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABBA92827AC15260005EA82 /* ViewController+ARSCNViewDelegate.swift */; };
+		0ABBA92B27AC15BD0005EA82 /* ViewController+OptionsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABBA92A27AC15BD0005EA82 /* ViewController+OptionsViewControllerDelegate.swift */; };
+		0ABBA93127AC1DCE0005EA82 /* Screenshot01.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0ABBA92D27AC1DCE0005EA82 /* Screenshot01.PNG */; };
+		0ABBA93227AC1DCE0005EA82 /* Screenshot03.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0ABBA92E27AC1DCE0005EA82 /* Screenshot03.PNG */; };
+		0ABBA93327AC1DCE0005EA82 /* Screenshot04.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0ABBA92F27AC1DCE0005EA82 /* Screenshot04.PNG */; };
+		0ABBA93427AC1DCE0005EA82 /* Screenshot02.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 0ABBA93027AC1DCE0005EA82 /* Screenshot02.PNG */; };
 		5519DC5720238B6000B1008D /* OptionSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5519DC5620238B6000B1008D /* OptionSelectorViewController.swift */; };
 		BE618F32203E31B8005EC6F1 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE618F31203E31B8005EC6F1 /* UIViewController+Extensions.swift */; };
 		BE915EAB20105C1D00A251FD /* OptionsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE915EAA20105C1D00A251FD /* OptionsContainerViewController.swift */; };
@@ -21,6 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0ABBA92827AC15260005EA82 /* ViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
+		0ABBA92A27AC15BD0005EA82 /* ViewController+OptionsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+OptionsViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		0ABBA92D27AC1DCE0005EA82 /* Screenshot01.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot01.PNG; sourceTree = "<group>"; };
+		0ABBA92E27AC1DCE0005EA82 /* Screenshot03.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot03.PNG; sourceTree = "<group>"; };
+		0ABBA92F27AC1DCE0005EA82 /* Screenshot04.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot04.PNG; sourceTree = "<group>"; };
+		0ABBA93027AC1DCE0005EA82 /* Screenshot02.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot02.PNG; sourceTree = "<group>"; };
 		5519DC5620238B6000B1008D /* OptionSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSelectorViewController.swift; sourceTree = "<group>"; };
 		BE618F31203E31B8005EC6F1 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		BE915EAA20105C1D00A251FD /* OptionsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsContainerViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +59,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0ABBA92C27AC1DBD0005EA82 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				0ABBA92D27AC1DCE0005EA82 /* Screenshot01.PNG */,
+				0ABBA93027AC1DCE0005EA82 /* Screenshot02.PNG */,
+				0ABBA92F27AC1DCE0005EA82 /* Screenshot04.PNG */,
+				0ABBA92E27AC1DCE0005EA82 /* Screenshot03.PNG */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		BEDB2ECD200EABAD001C6BBC = {
 			isa = PBXGroup;
 			children = (
@@ -66,8 +89,11 @@
 		BEDB2ED8200EABAD001C6BBC /* ARKit-Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				0ABBA92C27AC1DBD0005EA82 /* Screenshots */,
 				BEDB2ED9200EABAD001C6BBC /* AppDelegate.swift */,
 				BEDB2EDD200EABAD001C6BBC /* ViewController.swift */,
+				0ABBA92A27AC15BD0005EA82 /* ViewController+OptionsViewControllerDelegate.swift */,
+				0ABBA92827AC15260005EA82 /* ViewController+ARSCNViewDelegate.swift */,
 				BEDB2EEF200ECC4C001C6BBC /* BasicShape.swift */,
 				BEDB2EDF200EABAD001C6BBC /* Main.storyboard */,
 				BEDB2EF1200ECF14001C6BBC /* Options */,
@@ -154,6 +180,10 @@
 				BEDB2EEE200ECB94001C6BBC /* Options.storyboard in Resources */,
 				BEDB2EE6200EABAD001C6BBC /* LaunchScreen.storyboard in Resources */,
 				BEDB2EE3200EABAD001C6BBC /* Assets.xcassets in Resources */,
+				0ABBA93327AC1DCE0005EA82 /* Screenshot04.PNG in Resources */,
+				0ABBA93127AC1DCE0005EA82 /* Screenshot01.PNG in Resources */,
+				0ABBA93227AC1DCE0005EA82 /* Screenshot03.PNG in Resources */,
+				0ABBA93427AC1DCE0005EA82 /* Screenshot02.PNG in Resources */,
 				BEDB2EE1200EABAD001C6BBC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,9 +196,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEDB2EDE200EABAD001C6BBC /* ViewController.swift in Sources */,
+				0ABBA92927AC15260005EA82 /* ViewController+ARSCNViewDelegate.swift in Sources */,
 				BE915EAB20105C1D00A251FD /* OptionsContainerViewController.swift in Sources */,
 				BEDB2EDA200EABAD001C6BBC /* AppDelegate.swift in Sources */,
 				5519DC5720238B6000B1008D /* OptionSelectorViewController.swift in Sources */,
+				0ABBA92B27AC15BD0005EA82 /* ViewController+OptionsViewControllerDelegate.swift in Sources */,
 				BE618F32203E31B8005EC6F1 /* UIViewController+Extensions.swift in Sources */,
 				BEDB2EF0200ECC4C001C6BBC /* BasicShape.swift in Sources */,
 			);
